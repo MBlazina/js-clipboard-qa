@@ -1,0 +1,276 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 15px;
+  /*  display: flex;
+  flex-direction: column; */
+}
+.qa-row {
+  padding: 15px;
+  display: grid;
+  
+  //grid-gap: 15px;
+  grid-template:
+    "order status priority severity round"
+    "url url url url  feedback"
+    "screenshots screenshots  screenshots screenshots feedback"
+    "resolving . .  . feedback";
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 50%;
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+    border-top-left-radius: 30px;
+  
+}
+.row-order-number {
+  grid-area: order;
+}
+.task-severity {
+grid-area: severity;
+}
+.task-priority {
+grid-area: priority;
+}
+.resolving {
+  grid-area: resolving;
+}
+.page-url {
+  text-align: left;
+  word-break: break-all;
+  justify-self: start;
+  grid-area: url;
+  font-size: 12px;
+}
+.screenshots-container {
+  
+  display: flex;
+  justify-content: center;
+  grid-area: screenshots;
+  max-height: 200px;
+  height: auto;
+}
+.round-of-correction {
+  grid-area: round;
+  justify-self: end;
+}
+.feedback-wrapper {
+
+  grid-area: feedback;
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  .qa-feedback {
+    flex: 1;
+  }
+}
+.feedback {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  //position: absolute;
+  textarea {
+    flex: 1;
+    resize:vertical;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.status {
+  grid-area: status;
+}
+.qa-title{
+  justify-self: start;
+  
+}
+.qa-feedback {
+  /*   height: 100%; */
+  align-self: stretch;
+  justify-self: stretch;
+  //grid-auto-columns: min-content;
+ 
+  
+}
+.screenshot-wrapper {
+  box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+  margin: 0 5px;
+  flex: 1;
+  padding: 5px;
+  padding-bottom: 30px;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.2);
+  position: relative;
+  p {
+    text-align: center;
+  }
+}
+.screenshotThumbnail {
+  max-width: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+  height: 100%;
+    object-fit: contain;
+
+  &::before {
+    content: "";
+    width: 100%;
+    min-height: 50px;
+    height: auto;
+    background: lightgray;
+    display: block;
+  }
+  background: lightgray;
+  z-index: 2;
+
+  &.expanded {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: auto;
+  }
+}
+.screenshot-thumbnail-title {
+  line-height: 30px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.modal-screenshot-single {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  z-index: 5;
+  &.open {
+    display: flex;
+  }
+  img {
+    z-index: 6;
+    min-width: 10% !important;
+    
+  }
+}
+
+.data-row{
+  display: grid;
+  grid-template-areas:
+  "order header header"
+    "type main feedback-page"
+    ". initial-feedback pagination ";
+  grid-template-columns: min-content 1fr 1fr ;
+}
+.info {
+display: flex;
+background: lightgray;
+}
+.task-status {
+  font-size: 12px;
+  white-space: nowrap;
+}
+.severity,
+.priority {
+  
+  p{
+    font-size: 12px;
+    &.title{
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+    
+  }
+
+}
+.main {
+  grid-area: main;
+}
+.initial-feedback {
+  grid-area: initial-feedback;
+}
+.order{
+  grid-area: order;
+}
+.type{
+grid-area: type;
+}
+.info {
+  padding: 5px;
+  grid-area: info;
+}
+.severity{
+
+}
+.priority {
+
+}
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+grid-area: header;
+}
+.content{
+
+
+}
+.data-row{
+  border: 1px solid;
+  box-shadow: 0 6px 6px rgba(0,0,0,0.2);
+  padding: 0 15px;
+  border-radius: 10px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+.feedback-data {
+  flex: 1;
+  textarea {
+    
+  }
+}
+.feedback-wrapper {
+  padding: 5px;
+}
+.task-status {
+  text-align: center;
+}
+.feedback-data-wrapper {
+  display: flex;
+  padding: 15px;
+}
+.prod-feedback {
+  grid-area: prod;
+}
+.qa-feedback {
+grid-area: qa;
+}
+.feedback-pagination{
+  grid-area: pagination;
+}
+.feedback-title {
+  font-size: 16px;
+}
+.feedback-page{
+  grid-area: feedback-page;
+}
